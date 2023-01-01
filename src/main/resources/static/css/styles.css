@@ -1,0 +1,431 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+
+.lightbox-target {
+    position: fixed;
+    top: -100%;
+    width: 100%;
+    background: rgba(0,0,0,.7);
+    opacity: 0;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    overflow: hidden;
+
+}
+
+/* Styles the lightbox image, centers it vertically and horizontally, adds the zoom-in transition and makes it responsive using a combination of margin and absolute positioning */
+
+.lightbox-target img {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left:0;
+    right:0;
+    bottom: 0;
+    max-height: 0%;
+    max-width: 0%;
+    border: 3px solid white;
+    box-shadow: 0px 0px 8px rgba(0,0,0,.3);
+    box-sizing: border-box;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    z-index: 999999;
+
+}
+/* Provides part of the "X" to eliminate an image from the close link */
+
+a.lightbox-close:before {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 1px;
+    background: black;
+    position: absolute;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+}
+
+/* Provides part of the "X" to eliminate an image from the close link */
+
+a.lightbox-close:after {
+    content: "";
+    display: block;
+    height: 30px;
+    width: 1px;
+    background: black;
+    position: absolute;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+}
+
+/* Uses the :target pseudo-class to perform the animations upon clicking the .lightbox-target anchor */
+
+.lightbox-target:target {
+    opacity: 1;
+    top: 0;
+    bottom: 0;
+    overflow:scroll;
+}
+
+.lightbox-target:target img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.lightbox-target:target a.lightbox-close {
+    top: 0;
+}
+
+#home {
+    background-image: url("../images/images-recto/bg-home.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 800px;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.menu .home-btn {
+    color: #009b21;
+    font-weight: bold;
+}
+
+.menu #deconnexion-btn {
+    color: #000000;
+    font-weight: bold;
+
+}
+
+.menu .deconnexion-btn :hover {
+    color: #ad0000;
+}
+
+/*MENU*/
+#menuInfo {
+    padding-bottom: 80px;
+}
+
+
+#menuInfo h2 {
+    color: #3b3b3b;
+    margin-bottom: 20px;
+}
+
+#menuInfo a {
+    font-size: large;
+    text-decoration: none;
+    color: #3b3b3b;
+}
+
+
+.btn {
+    border-radius: 2px;
+}
+
+.dropdown button {
+    font-weight: bolder;
+
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+
+/* The overlay effect - lays on top of the container and over the image */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background: rgb(255, 255, 255);
+    transition: .5s ease;
+    opacity: 0;
+    font-size: 30px;
+    padding: 20px;
+    text-align: center;
+}
+
+/*BODY*/
+body {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 10px;
+    background-color: #ebebeb;
+    font-size: 14px;
+    font-family: Verdana, ui-rounded;
+}
+
+/*NAVBAR*/
+navbar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+/*
+header top
+*/
+
+.mx-background-top-linear {
+    background: linear-gradient(45deg, #ffffff 48%, rgb(235, 253, 216) 48%);
+    box-shadow: #1d2124 2px 2px 5px;
+}
+
+
+.NameAuth h3 {
+    color: rgb(255, 255, 255);
+    padding-right: 15px;
+}
+
+
+/*MENU forma recette*/
+h2 {
+    vertical-align: center;
+    text-align: center;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+* {
+    font-family: "Raleway", serif;
+    box-sizing: border-box;
+}
+
+.top-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    top: -24.3px;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #FFF;
+    padding: 1.5em;
+    margin-top: -2%;
+    font-size: large;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    overflow: hidden;
+    padding: 5px;
+
+
+}
+
+.menu li:hover {
+    background-color: rgb(202, 255, 163);
+    font-weight: bold;
+    color: #0b2e13;
+}
+
+.menu .focus {
+    background-color: rgba(130, 255, 5, 0.29);
+    font-weight: bold;
+    color: #0b2e13;
+}
+
+.menu-button-container {
+    display: none;
+    height: 100%;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+    display: block;
+    background-color: #000000;
+    position: absolute;
+    height: 4px;
+    width: 30px;
+    transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 2px;
+}
+
+.menu-button::before {
+    content: '';
+    margin-top: -8px;
+}
+
+.menu-button::after {
+    content: '';
+    margin-top: 8px;
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button {
+    background: rgba(255, 255, 255, 0);
+}
+
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+}
+
+.home-message {
+    background-color: #fafafa;
+    text-align: center;
+    font-family: Verdana, ui-rounded;
+    margin: 0 auto;
+    width: 50%;
+    box-shadow: rgb(0, 0, 0) 0 20px 20px -2px;
+}
+
+.home-message li {
+    list-style: none;
+}
+
+.thumbnail h3, .thumbnail h4 {
+    text-decoration: none;
+    color: black;
+}
+
+.thumbnail a:link {
+    text-decoration: none;
+}
+
+.thumbnail a:visited {
+    text-decoration: none;
+}
+
+.thumbnail a:hover {
+    text-decoration: none;
+}
+
+.thumbnail a:active {
+    text-decoration: none;
+}
+
+.thumbnail:hover {
+    box-shadow: rgb(0, 0, 0) 0 25px 50px -12px;
+    transform: scale(1.05);
+    transition: transform .5s ease;
+}
+
+.infos-bottom {
+    font-size: 15px;
+}
+
+/*-------------------------------RESPONSIVE*/
+@media (max-width: 1200px) {
+
+    .home-message {
+        width: auto;
+        text-align: center;
+    }
+
+    .jumbotron{
+        width: 120%;
+    }
+    #home {
+        background-image: none;
+    }
+    .menu-button-container {
+        display: flex;
+    }
+
+    .menu {
+        position: absolute;
+        top: 0;
+        margin-top: 50px;
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        color: #000000;
+        background-color: white;
+    }
+
+    #menu-toggle ~ .menu li {
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    #menu-toggle:checked ~ .menu li {
+        border: 1px solid #333;
+        height: 2.5em;
+        padding: 0.5em;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .menu > li {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0.5em 0;
+        width: 100%;
+        color: #000000;
+        background-color: white;
+    }
+
+    .menu > li:not(:last-child) {
+        border-bottom: 1px solid #444;
+    }
+
+    .row-image{
+        width: 400px;
+    }
+
+    .deconnexion {
+        color: red;
+    }
+}
+
+@media (max-width: 460px) {
+    .top-nav {
+        margin-top: 3%;
+    }
+
+    .row-image{
+        width: 350px;
+    }
+
+}

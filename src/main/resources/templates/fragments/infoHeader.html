@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="headInfo" id="menuInfo">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<!-- Navigation FROM HOME-->
+	<div class="fixed-top" th:if="${menuAcceuil}">
+		<nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
+			<nav>
+				<div class="container">
+					<ul class="menu">
+						<li><a class="home-btn" th:href="@{/}" th:classappend="${showAcceuilBtn}? 'focus'">| ACCUEIL
+							|</a></li>
+
+						<li th:each="provenance : ${provenanceRecette}">
+							<a th:href="@{/recettes/{id}(id=${provenance.id})}"
+							   th:text="${provenance.nomProvenanceRecette}"></a>
+						</li>
+						<li>
+							<a class="deconnexion-btn" th:href="@{/logout}">| DECONNEXION |</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</nav>
+	</div>
+	<!-- Navigation -->
+	<div class="fixed-top" th:if="${menuHelloFresh}">
+		<nav class="navbar navbar-expand-lg navbar-dark mx-background-top-linear">
+			<nav>
+				<div class="container">
+					<input id="menu-toggle" type="checkbox"/>
+					<label class='menu-button-container' for="menu-toggle">
+						<div class='menu-button'></div>
+					</label>
+					<ul class="menu">
+						<li><a class="home-btn" th:href="@{/}">| ACCUEIL |</a></li>
+						<div class="dropdown">
+							<li>
+								<button class="btn dropdown-toggle" type="button" data-toggle="dropdown"
+								        th:text="${provenanceSelected.nomProvenanceRecette}"
+								        style="font-family: Verdana, ui-rounded;">
+								</button>
+								<ul class="dropdown-menu">
+									<li th:each="provenance : ${provenanceRecette}"
+									    th:classappend="${provenance.id == focusProvenance}? 'focus'">
+										<a th:href="@{/recettes/{id}(id=${provenance.id})}"
+										   th:text="${provenance.nomProvenanceRecette}"></a>
+									</li>
+								</ul>
+							</li>
+						</div>
+						<li th:each="format : ${formats}" th:classappend="${format.id == focus}? 'focus'">
+							<a th:href="@{/recettes/hellofresh/format/{id}(id=${format.id})}"
+							   th:text="${format.libelleFormatRecette}"></a>
+						</li>
+						<li>
+							<a class="deconnexion-btn" th:href="@{/logout}">| DECONNEXION |</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</nav>
+	</div>
+</header>
+</html>

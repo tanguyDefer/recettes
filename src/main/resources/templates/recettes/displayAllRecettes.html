@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head th:replace="fragments/header :: taghead">
+</head>
+<body class="body">
+<div id="containerNav">
+	<header th:replace="fragments/infoHeader :: headInfo"></header>
+	<div th:replace="fragments/menu :: tagmenu"></div>
+</div>
+
+<!-- content start -->
+<div class="container-fiches" style="width: 60%;  margin: 0 auto;">
+	<form th:action="@{/recettes/search}">
+		<div th:if="${notFind}">
+			<h5 style="color: red; font-weight: bold" th:text="'Aucunes recettes trouvées pour votre recherche : ' + ${search}"></h5>
+		</div>
+		<input placeholder="Rechercher une recette" type="text" name="keyword" class="keyword" size="30"
+		       th:value="${keyword}" required/>
+		&nbsp;
+		<input class="btn btn-light" type="submit" value="Rechercher"/>
+	</form>
+	<div class="dropdown">
+		<button class="btn dropdown-toggle" type="button" data-toggle="dropdown"
+		        style="font-family: Verdana, ui-rounded;">
+			Filtre temps en cuisine
+		</button>
+		<a th:if="${displayAllRecettesBtn}" class="btn btn-light" th:href="@{/recettes/1}">Afficher toutes les rcettes</a>
+		<ul th:if="${idFormat}" class="dropdown-menu">
+			<li th:each="recette : ${time}">
+				<a th:href="@{/recettes/format/filter/{duree}/{id}(duree=${recette.dureeTotaleRecette}, id=${idFormat})}"
+				   th:text="${recette.dureeTotaleRecette}"></a>
+			</li>
+		</ul>
+		<ul th:unless="${idFormat}" class="dropdown-menu">
+			<li th:each="recette : ${time}">
+				<a th:href="@{/recettes/filter/{duree}(duree=${recette.dureeTotaleRecette})}"
+				   th:text="${recette.dureeTotaleRecette}"></a>
+			</li>
+		</ul>
+	</div>
+	<div class="jumbotron" style="margin: 0 auto;">
+		<div class="row flex">
+			<div class="col-lg-4 col-sm-12" th:each="recette : ${recettesFormat}">
+				<div class="thumbnail">
+					<a class="link-fiche" th:href="@{/recettes/hellofresh/{id}(id=${recette.id})}">
+						<img class="img-zoom" th:alt="${recette.libelleRecette}"
+						     th:src="@{${'/images/images-recto-mini/'+ recette.libelleRecette + '.jpg'}}"/>
+						<h3 style="font-weight: bold" th:text="${recette.libelleRecette}"></h3>
+						<h4 style="font-weight: lighter" th:text="${recette.infosSupp}"></h4>
+						<div class="infos-bottom" style="display: flex; flex-direction: row">
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+							     class="bi bi-stopwatch" viewBox="0 0 16 16">
+								<path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+								<path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+							</svg>
+							<div>
+								<h5 th:text="${recette.dureeTotaleRecette}"></h5>
+							</div>
+							<p style="margin: 5px;">|</p>
+							<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+							     class="bi bi-info" viewBox="0 0 16 16">
+								<path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+							</svg>
+							<div th:each="format : ${recette.formatsRecette}">
+								<h5 style="padding-right: 4px" th:text="${format.libelleFormatRecette}"></h5>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

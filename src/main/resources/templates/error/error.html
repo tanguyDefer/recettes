@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head th:replace="fragments/header :: taghead">
+</head>
+<body class="body">
+<div id="containerNav">
+    <header th:replace="fragments/infoHeader :: headInfo"></header>
+    <div th:replace="fragments/menu :: tagmenu"></div>
+</div>
+<center>
+    <h1>Erreur serveur</h1>
+    <h2 th:text="${errorMessage}">Titre</h2>
+    <h2>Contactez l'administrateur</h2>
+    <a class="btn btn-primary" href="/">Retour accueil</a>
+</center>
+</body>
+</html>

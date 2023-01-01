@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head th:replace="fragments/header :: taghead">
+</head>
+<body class="body">
+<div id="containerNav">
+	<header th:replace="fragments/infoHeader :: headInfo"></header>
+	<div th:replace="fragments/menu :: tagmenu"></div>
+</div>
+<div class="row-image">
+	<div class="align-content-center">
+		<a href="#recto">
+			<img class="img-responsive" th:alt="${ficheRecette.libelleRecette}"
+			     th:src="@{${'/images/images-recto/'+ ficheRecette.libelleRecette + '.jpg'}}"/>
+		</a>
+		<a href="#verso">
+			<img class="img-responsive" th:alt="${ficheRecette.libelleRecette}"
+			     th:src="@{${'/images/images-verso/'+ ficheRecette.libelleRecette + '.jpg'}}"/>
+		</a>
+
+		<div class="lightbox-target" id="recto">
+			<a class="lightbox-close" href="#">
+				<img th:alt="${ficheRecette.libelleRecette}"
+				     th:src="@{${'/images/images-recto/'+ ficheRecette.libelleRecette + '.jpg'}}"/>
+			</a>
+		</div>
+		<div class="lightbox-target" id="verso">
+			<a class="lightbox-close" href="#">
+				<img th:alt="${ficheRecette.libelleRecette}"
+				     th:src="@{${'/images/images-verso/'+ ficheRecette.libelleRecette + '.jpg'}}"/>
+			</a>
+		</div>
+	</div>
+</div>
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
