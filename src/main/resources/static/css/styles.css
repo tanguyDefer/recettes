@@ -245,7 +245,7 @@ html, body {
 }
 
 .menu li:hover {
-    background-color: rgb(202, 255, 163);
+    background-color: rgb(235, 253, 216);
     font-weight: bold;
     color: #0b2e13;
 }
